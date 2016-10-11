@@ -23,6 +23,7 @@ public class Helper {
     public static void main(String[] args) {
         // TODO code application logic here
     }
+
     public static void mensaje(Component ventana, String mensaje, int tipo) {
         switch (tipo) {
             case 1:
@@ -101,6 +102,7 @@ public class Helper {
         }
         return m;
     }
+
     public static String recorridoHaciaDerecha(int[][] m, int i, int in, int fin) {
 
         String aux = "";
@@ -130,6 +132,7 @@ public class Helper {
         return aux;
 
     }
+
     public static String recorridoHaciaArriba(int[][] m, int j, int in, int fin) {
 
         String aux = "";
@@ -139,44 +142,99 @@ public class Helper {
         return aux;
 
     }
+
     public static String recorridoDiagonalSecundariaAbajo(int[][] m, int in, int fin) {
-      
-        int nc =m[0].length;
+
+        int nc = m[0].length;
         String aux = "";
         for (int i = in; i <= fin; i++) {
+            aux = aux + m[i][nc - 1 - i] + ", ";
+
+        }
+        return aux;
+    }
+
+    public static String recorridoDiagonalPrincipalAbajo(int[][] m, int in, int fin) {
+
+        String aux = "";
+        for (int i = in; i <= fin; i++) {
+            aux = aux + m[i][i] + ", ";
+
+        }
+        return aux;
+    }
+        public static String recorridoDiagonalSecundariaArriba(int[][] m, int in, int fin) {
+        
+        int nc =m[0].length;
+        String aux = "";
+        for (int i = in; i >= fin; i--) {
             aux = aux + m[i][nc-1-i]+ ", ";
             
         }
         return aux;
     }
+
     public static String recorridoCuatro(JTable tabla) {
         int m[][] = pasoDeDatos(tabla);
         int nf = m.length;
         int nc = m[0].length;
         String aux = "";
 
-        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nf-2);
-        aux = aux + Helper.recorridoDiagonalSecundariaAbajo(m, 0, nf-1);
-        aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, 1, nc -1);
-         
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nf - 2);
+        aux = aux + Helper.recorridoDiagonalSecundariaAbajo(m, 0, nf - 1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, 1, nc - 1);
+
         aux = aux.substring(0, aux.length() - 2) + ".";
 
         return aux;
-    } 
+    }
+
     public static String recorridoUno(JTable tabla) {
         int m[][] = pasoDeDatos(tabla);
         int nf = m.length;
         int nc = m[0].length;
         String aux = "";
 
-        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc-1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc - 1);
         aux = aux + Helper.recorridoHaciaAbajo(m, nf - 1, 1, (nf / 2) + 1);
         aux = aux + Helper.recorridoHaciaIzquierda(m, (nf / 2), nc - 2, 0);
         aux = aux + Helper.recorridoHaciaAbajo(m, 0, (nf / 2) + 1, nf - 1);
         aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, 0, nc - 1);
-        
+
         aux = aux.substring(0, aux.length() - 2) + ".";
 
         return aux;
-    } 
+    }
+
+    public static String recorridoCinco(JTable tabla) {
+        int m[][] = pasoDeDatos(tabla);
+        int nf = m.length;
+        int nc = m[0].length;
+        String aux = "";
+
+        aux = aux + Helper.recorridoHaciaArriba(m, 0, nf-1, 0);
+        aux = aux + recorridoDiagonalPrincipalAbajo(m, 1, nf/2 );
+        aux = aux + recorridoDiagonalSecundariaArriba(m, (nf/2-1), 1 );
+        aux = aux + recorridoHaciaAbajo( m, 0, 0, 0);
+
+        aux = aux.substring(0, aux.length() - 2) + ".";
+
+        return aux;
+    }
+    public static String recorridoDos(JTable tabla) {
+        int m[][] = pasoDeDatos(tabla);
+        int nf = m.length;
+        int nc = m[0].length;
+        String aux = "";
+
+        aux = aux + Helper.recorridoHaciaArriba(m, 0, nf-1, 0);
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 1, nc/2);
+        aux = aux + Helper.recorridoHaciaAbajo(m, nc/2, 1, nc);
+        aux = aux + Helper.recorridoHaciaDerecha(m, nf -1 , (nc/2)+1, nc-1);
+        aux = aux + Helper.recorridoHaciaArriba(m, nc - 1, nf-2, 0);
+
+        aux = aux.substring(0, aux.length() - 2) + ".";
+
+        return aux;
+    }
 }

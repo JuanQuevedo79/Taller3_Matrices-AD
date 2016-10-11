@@ -195,7 +195,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
 
-        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Recorrido Figura Uno", "2. Recorrido Figura Dos", "3. Recorrido Figura Tres", "4. Recorrido Figura Cuatro", "5. Recorrido Figura Cinco", " " }));
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Recorrido Figura Uno", "2. Recorrido Figura Dos", "3. Recorrido Figura Tres", "4. Recorrido Figura Cuatro", "5. Recorrido Figura Cinco" }));
         cmbOperaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbOperacionesActionPerformed(evt);
@@ -365,7 +365,7 @@ public class Principal extends javax.swing.JFrame {
                 txtResultado.setText(Helper.recorridoUno(tblTablaInicial));
                 break;
             case 1:
-
+                txtResultado.setText(Helper.recorridoDos(tblTablaInicial));
                 break;
             case 2:
 
@@ -374,7 +374,7 @@ public class Principal extends javax.swing.JFrame {
                 txtResultado.setText(Helper.recorridoCuatro(tblTablaInicial));
                 break;
             case 4:
-                
+                txtResultado.setText(Helper.recorridoCinco(tblTablaInicial));
                 break;
         }
 
