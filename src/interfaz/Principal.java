@@ -256,7 +256,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumerodeColumnasKeyTyped
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
-        int nf, nc;
+        int nf, nc, cont = 0;
         DefaultTableModel tm;
 
         if (txtNumerodeFilas.getText().trim().isEmpty()) {
@@ -266,10 +266,19 @@ public class Principal extends javax.swing.JFrame {
             Helper.habilitarBotones(botonesH);
 
         } else if (txtNumerodeColumnas.getText().trim().isEmpty()) {
-            Helper.mensaje(this, "Por Favor Ingrese el valor DeNumero de Columnas", 3);
+            Helper.mensaje(this, "Por Favor Ingrese el valor De Numero de Columnas", 3);
             txtNumerodeColumnas.requestFocusInWindow();
             JButton botonesH[] = {cmdCrear};
             Helper.habilitarBotones(botonesH);
+        } else if (Integer.parseInt(txtNumerodeFilas.getText()) < 5 || Integer.parseInt(txtNumerodeFilas.getText()) > 13) {
+            Helper.mensaje(this, "solo numeros impares Iguales o menores 13 y mayores o igual que 3", 3);
+            txtNumerodeFilas.requestFocusInWindow();
+            txtNumerodeFilas.selectAll();
+
+        } else if (Integer.parseInt(txtNumerodeColumnas.getText()) < 5 || Integer.parseInt(txtNumerodeColumnas.getText()) > 13) {
+            Helper.mensaje(this, "solo numeros impares Iguales o menores 13 y mayores o igual que 3", 3);
+            txtNumerodeColumnas.requestFocusInWindow();
+            txtNumerodeColumnas.selectAll();
 
         } else if (Integer.parseInt(txtNumerodeColumnas.getText()) == 0) {
             Helper.mensaje(this, "Número de columnas no puede ser cero", 3);
@@ -278,6 +287,27 @@ public class Principal extends javax.swing.JFrame {
         } else if (Integer.parseInt(txtNumerodeFilas.getText()) == 0) {
             Helper.mensaje(this, "Número de filas no puede ser cero", 3);
             txtNumerodeFilas.requestFocusInWindow();
+
+        } else if (Integer.parseInt(txtNumerodeFilas.getText()) % 2 == 0) {
+            cont++;
+            if (cont >= 1) {
+                Helper.mensaje(this, "Por favor ingrese solo numeros impares  ", 3);
+                txtNumerodeFilas.requestFocusInWindow();
+                txtNumerodeFilas.selectAll();
+            }
+
+        } else if ((Integer.parseInt(txtNumerodeFilas.getText())) != (Integer.parseInt(txtNumerodeColumnas.getText()))) {
+            Helper.mensaje(this, "Ingres un numero de filas y de columnas iguales", 3);
+            txtNumerodeFilas.requestFocusInWindow();
+            txtNumerodeFilas.selectAll();
+
+        } else if (Integer.parseInt(txtNumerodeColumnas.getText()) % 2 == 0) {
+            cont++;
+            if (cont >= 1) {
+                Helper.mensaje(this, "Por favor ingrese solo numeros impares menores de 14 y mayores o igual que 3 ", 3);
+                txtNumerodeColumnas.requestFocusInWindow();
+                txtNumerodeColumnas.selectAll();
+            }
 
         } else {
 
