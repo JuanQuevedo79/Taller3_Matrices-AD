@@ -214,8 +214,8 @@ public class Helper {
 
         aux = aux + Helper.recorridoHaciaArriba(m, 0, nf-1, 0);
         aux = aux + recorridoDiagonalPrincipalAbajo(m, 1, nf/2 );
-        aux = aux + recorridoDiagonalSecundariaArriba(m, (nf/2-1), 1 );
-        aux = aux + recorridoHaciaAbajo( m, 0, 0, 0);
+        aux = aux + recorridoDiagonalSecundariaArriba(m, (nf/2-1), 0 );
+        aux = aux + recorridoHaciaAbajo( m, nc-1, 1, nf);
 
         aux = aux.substring(0, aux.length() - 2) + ".";
 
